@@ -24,6 +24,6 @@ USE damkar_vts;
 - pastikan port `80, 8000, 3306` tidak sedang menyala/running di local PC/laptop-mu
 - jika ternyata sedang menyala, silakan matikan port tersebut atau kamu bisa juga menyesuaikan port-port dengan mengubah file `docker-compose.yml`
 - jika semua sudah OK, ketikan `docker-compose up`
-- tunggu beberapa saat (kurang lebih 6 menit), sampai semua proses docker-compose selesai
+- tunggu beberapa saat (kurang lebih 6 menit karena file dump sql yg cukup besar), sampai semua proses docker-compose selesai
 - coba akses browser dengan mengetik url ccdamkar `http://localhost/ccdamkar`
 - selamat mencoba
