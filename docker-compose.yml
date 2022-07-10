@@ -10,6 +10,8 @@ services:
             - db
         networks:
             - default
+        environment:
+            CI_ENV: local
     db:
         image: mysql:5.6
         ports: 
