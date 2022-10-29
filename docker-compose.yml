@@ -4,8 +4,11 @@ services:
         build: .
         ports: 
             - "80:80"
+            - "443:443"
         volumes:
-            - ${WORKING_DIR_PHP}:/var/www/html/
+            - ${WORKING_DIR_PHP}/ccdamkar:/var/www/html/
+            - ./mycert.crt:/etc/ssl/certs/mycert.crt
+            - ./mycert.key:/etc/ssl/private/mycert.key
         links:
             - db
         networks:
