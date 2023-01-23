@@ -13,10 +13,11 @@ RUN apt-get update \
 RUN apt-get install -y \
         libzip-dev \
         zip \
-   && docker-php-ext-install zip
+        libpng-dev \
+   && docker-php-ext-install gd
 
 RUN pecl install imagick \
- && docker-php-ext-enable imagick && install redis && docker-php-ext-enable redis
+ && docker-php-ext-enable imagick
 
 RUN sed -i '/SSLCertificateFile.*snakeoil\.pem/c\SSLCertificateFile \/etc\/ssl\/certs\/mycert.crt' /etc/apache2/sites-available/default-ssl.conf && sed -i '/SSLCertificateKeyFile.*snakeoil\.key/cSSLCertificateKeyFile /etc/ssl/private/mycert.key' /etc/apache2/sites-available/default-ssl.conf
 RUN a2ensite default-ssl
