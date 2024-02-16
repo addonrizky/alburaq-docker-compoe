@@ -1,10 +1,10 @@
-FROM php:7.3-apache
+FROM php:7.4-apache
 
-ENV http_proxy http://10.15.3.20:80/
-ENV https_proxy http://10.15.3.20:80/
-ENV no_proxy 172.31.1.251
+#ENV http_proxy http://10.15.3.20:80/
+#ENV https_proxy http://10.15.3.20:80/
+#ENV no_proxy 172.31.1.251
 
-RUN pear config-set http_proxy http://10.15.3.20:80/
+#RUN pear config-set http_proxy http://10.15.3.20:80/
 
 RUN echo 'SetEnv CI_ENV ${CI_ENV}' > /etc/apache2/conf-enabled/environment.conf
 RUN apt-get update && apt-get install -y libpq-dev && docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mysql

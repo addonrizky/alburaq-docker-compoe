@@ -1,22 +1,29 @@
 version: "2"
 services:
     www:
-        build: .
+        # image: rizkyaddon/php8:v1
+        build : .
         ports: 
             - "80:80"
             - "443:443"
         volumes:
-            - ${WORKING_DIR_PHP}/ccdamkar:/var/www/html/
+            # - ${WORKING_DIR_PHP}/ccdamkar:/var/www/html/
+            - ${WORKING_DIR_PHP}:/var/www/html/
             - ./mycert.crt:/etc/ssl/certs/mycert.crt
             - ./mycert.key:/etc/ssl/private/mycert.key
-        links:
-            - db
+            - ./php.ini-development:/usr/local/etc/php/php.ini-development
+            - ./php.ini-production:/usr/local/etc/php/php.ini-production
+            - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+        #links:
+        #    - db
         networks:
             - default
         environment:
             CI_ENV: local
     db:
-        image: mysql:5.6
+        # image: mysql:8.0
+        image: mysql:8.0
+        command: --default-authentication-plugin=mysql_native_password
         ports: 
             - "3306:3306"
         environment:
