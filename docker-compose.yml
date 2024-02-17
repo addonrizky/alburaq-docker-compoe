@@ -15,10 +15,15 @@ services:
             - ./php.ini-production:/usr/local/etc/php/php.ini-production
             - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
             - ./default-ssl.conf:/etc/apache2/sites-available/default-ssl.conf
+        command: 
+        - /bin/bash
+        - -c
+        - |
+            a2ensite default-ssl.conf
         #links:
         #    - db
         networks:
-            - default
+            - default 
         environment:
             CI_ENV: local
     db:
