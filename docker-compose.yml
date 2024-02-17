@@ -14,11 +14,8 @@ services:
             - ./php.ini-development:/usr/local/etc/php/php.ini-development
             - ./php.ini-production:/usr/local/etc/php/php.ini-production
             - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
-        command: 
-        - /bin/bash
-        - -c
-        - |
-            a2ensite default-ssl.conf
+            - ./ssl-cert-snakeoil.pem:/etc/ssl/certs/ssl-cert-snakeoil.pem
+            - ./ssl-cert-snakeoil.key:/etc/ssl/private/ssl-cert-snakeoil.key
         #links:
         #    - db
         networks:
