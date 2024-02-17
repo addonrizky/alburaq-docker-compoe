@@ -7,7 +7,10 @@ FROM php:7.4-apache
 #RUN pear config-set http_proxy http://10.15.3.20:80/
 
 RUN echo 'SetEnv CI_ENV ${CI_ENV}' > /etc/apache2/conf-enabled/environment.conf
-RUN apt-get update && apt-get install -y libpq-dev && docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mysql && vim && telnetd
+RUN apt-get update && apt-get install -y libpq-dev && docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mysql
+
+RUN apt-get install vim
+RUN apt-get install telnetd
 
 RUN a2enmod rewrite
 RUN a2enmod ssl
