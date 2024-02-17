@@ -9,8 +9,8 @@ FROM php:7.4-apache
 RUN echo 'SetEnv CI_ENV ${CI_ENV}' > /etc/apache2/conf-enabled/environment.conf
 RUN apt-get update && apt-get install -y libpq-dev && docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mysql
 
-RUN apt-get install vim
-RUN apt-get install telnetd
+RUN apt-get install -y vim
+RUN apt-get install -y telnetd
 
 RUN a2enmod rewrite
 RUN a2enmod ssl
